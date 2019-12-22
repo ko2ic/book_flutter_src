@@ -1,0 +1,9 @@
+{
+  "@@last_modified": "2019-11-28T23:51:51.874154",
+  "pageTitleMyApp": "Flutter Demo",
+  "@pageTitleMyApp": {
+    "description": "MyAppのappbarのtitle文言",
+    "type": "text",
+    "placeholders": {}
+  }
+}
