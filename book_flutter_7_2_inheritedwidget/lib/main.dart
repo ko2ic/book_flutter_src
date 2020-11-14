@@ -83,6 +83,11 @@ class _HomePage extends StatefulWidget {
     }
     return (context.getElementForInheritedWidgetOfExactType<_MyInheritedWidget>().widget as _MyInheritedWidget).data;
   }
+
+// InheritedModelの場合
+// static _HomePageState of(BuildContext context, String aspect) {
+//   return InheritedModel.inheritFrom<_MyInheritedWidget>(context, aspect: aspect).data;
+// }
 }
 
 class _HomePageState extends State<_HomePage> {
@@ -104,6 +109,14 @@ class _HomePageState extends State<_HomePage> {
 }
 
 class _MyInheritedWidget extends InheritedWidget {
+// InheritedModelの場合
+// class _MyInheritedWidget extends InheritedModel {
+//   @override
+//   bool updateShouldNotifyDependent(_MyInheritedWidget old, Set aspects) {
+//     // A文字列が送られてきた場合だけ通知する
+//     return aspects.contains('A');
+//   }
+
   _MyInheritedWidget({
     Key key,
     @required Widget child,
@@ -123,6 +136,9 @@ class _WidgetA extends StatelessWidget {
     print("called _WidgetA#build()");
 // 1 Stateの取得方法
     final state = _HomePage.of(context);
+    // InheritedModelの場合
+    // A文字列なのでリビルドする
+    // final state = _HomePage.of(context, 'A');
     return Center(
       child: Text(
         '${state.counter}',
@@ -146,6 +162,10 @@ class _WidgetC extends StatelessWidget {
     print("called _WidgetC#build()");
 // 2 こっちはrebuildしない
     final state = _HomePage.of(context, rebuild: false);
+    // InheritedModelの場合
+    // C文字列なのでリビルドされない
+    // final state = _HomePage.of(context, 'C');
+
     return RaisedButton(
       onPressed: () {
         state._incrementCounter();
