@@ -17,3 +17,23 @@ class CounterValue2 extends ValueNotifier<int> {
     super.value += increaseCount;
   }
 }
+
+class CounterValue3 with ChangeNotifier {
+  final CountRepository _repository;
+  final LoadingValue3 _loadingValue;
+
+  CounterValue3(this._repository, this._loadingValue);
+
+  int _counter = 0;
+
+  int get counter => _counter;
+
+  void incrementCounter() async {
+    _loadingValue.loading(isLoading: true);
+    var increaseCount = await _repository.fetch().whenComplete(() {
+      _loadingValue.loading(isLoading: false);
+    });
+    _counter += increaseCount;
+    notifyListeners();
+  }
+}

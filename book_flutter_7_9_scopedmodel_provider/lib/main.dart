@@ -71,6 +71,16 @@ class TopPage2_2 extends StatelessWidget {
             return CounterValue2(_repository, loading);
           },
         ),
+// CounterValueでChangeNotifierを使った場合は以下
+//         ChangeNotifierProvider<LoadingValue3>(
+//           create: (_) => LoadingValue3(),
+//         ),
+//         ChangeNotifierProvider<CounterValue3>(
+//           create: (context) {
+//             var loading = Provider.of<LoadingValue3>(context, listen: false);
+//             return CounterValue3(_repository, loading);
+//           },
+//         ),
       ],
       child: Stack(
         children: <Widget>[
@@ -113,6 +123,21 @@ class _WidgetA extends StatelessWidget {
     );
   }
 }
+
+// CounterValueでChangeNotifierを使った場合は以下
+// class _WidgetA extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     print("called _WidgetA#build()");
+//     var logic = Provider.of<CounterValue3>(context, listen: true);
+//     return Center(
+//       child: Text(
+//         '${logic.counter}',
+//         style: Theme.of(context).textTheme.headline4,
+//       ),
+//     );
+//   }
+// }
 
 class _WidgetB extends StatelessWidget {
   @override

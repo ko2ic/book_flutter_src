@@ -7,3 +7,14 @@ class LoadingValue2 extends ValueNotifier<bool> {
     super.value = isLoading;
   }
 }
+
+class LoadingValue3 with ChangeNotifier {
+  bool _isLoading = false;
+
+  bool get isLoading => _isLoading;
+
+  loading({bool isLoading = false}) {
+    _isLoading = isLoading;
+    notifyListeners();
+  }
+}
