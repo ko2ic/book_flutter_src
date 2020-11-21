@@ -55,13 +55,16 @@ class _ListPage extends StatelessWidget {
       stream: bloc.value,
       builder: (context, snapshot) {
         var result = snapshot.data;
+        String errorMessage;
         if (snapshot.hasError) {
           if (snapshot.error is LinkedHashMap) {
             //　エラーの場合に前の状態を表示したいならこんな感じ
             result = (snapshot.error as LinkedHashMap)['beforeValue'];
+            errorMessage = (snapshot.error as LinkedHashMap)["error"];
           } else {
             var graphqlErrors = (snapshot.error as List<GraphQLError>);
             graphqlErrors.forEach(print);
+            errorMessage = graphqlErrors.join("\n");
           }
         }
 
@@ -89,7 +92,7 @@ class _ListPage extends StatelessWidget {
                 ),
               ],
             ),
-            snapshot.hasError ? Text((snapshot.error as List<GraphQLError>).join("\n")) : const SizedBox.shrink(),
+            snapshot.hasError ? Text(errorMessage) : const SizedBox.shrink(),
             Expanded(
                 child: ListView.separated(
               itemCount: result?.items?.length ?? 0,

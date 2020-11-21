@@ -4,8 +4,8 @@ import 'package:book_flutter_5_3_graphql/domains/models/dto/sample_result_dto.da
 import 'package:graphql/client.dart';
 
 class SampleHttpClient {
-  // 次のページで作成したトークンを設定する [https://github.com/settings/tokens/]
-  static const _yourPersonalAccessToken = 'TODO 自分で設定してください';
+  // 次のページで作成したトークンを設定する [https://github.com/settings/tokens/] 「Select scopes」は未選択で大丈夫です。
+  static const _yourPersonalAccessToken = 'TODO アクセストークンを設定してください。SampleHttpClientソースを確認';
 
   static const _search = r'''
 query ($freeWord: String!) {
