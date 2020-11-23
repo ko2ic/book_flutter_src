@@ -57,11 +57,12 @@ class _WidgetA extends StatelessWidget {
     var bloc = Provider.of<CounterBloc>(context, listen: false);
     return Center(
       child: StreamBuilder<int>(
+        initialData: 0,
         stream: bloc.value,
         builder: (context, snapshot) {
           return Text(
             '${snapshot.data}',
-            style: Theme.of(context).textTheme.display1,
+            style: Theme.of(context).textTheme.headline4,
           );
         },
       ),
