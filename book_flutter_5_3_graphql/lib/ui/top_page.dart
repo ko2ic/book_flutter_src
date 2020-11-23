@@ -62,7 +62,7 @@ class _ListPage extends StatelessWidget {
             result = (snapshot.error as LinkedHashMap)['beforeValue'];
             errorMessage = (snapshot.error as LinkedHashMap)["error"];
           } else {
-            var graphqlErrors = (snapshot.error as List<GraphQLError>);
+            var graphqlErrors = (snapshot.error as OperationException).graphqlErrors;
             graphqlErrors.forEach(print);
             errorMessage = graphqlErrors.join("\n");
           }

@@ -54,9 +54,9 @@ query ($freeWord: String!) {
 
     final result = await _client.query(options);
 
-    if (result.hasErrors) {
-      print(result.errors);
-      return Future.error(result.errors);
+    if (result.hasException) {
+      print(result.exception);
+      return Future.error(result.exception);
     }
 
     return SampleResultDto.fromJson(result.data['search']);
