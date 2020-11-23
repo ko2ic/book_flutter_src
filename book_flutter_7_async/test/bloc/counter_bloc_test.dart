@@ -13,17 +13,15 @@ main() {
     test('fetch()の戻りが1の場合', () async {
       var repository = _MockCountRepository();
       var loadingBloc = _MockLoadingBloc();
-
       var target = CounterBloc(repository, loadingBloc);
-
       when(loadingBloc.loading(isLoading: true)).thenReturn(null);
+// 1 fetch()の戻り値はFuture。その場合は、thenAnswer()を使う
       when(repository.fetch()).thenAnswer((_) => Future.value(1));
       when(loadingBloc.loading(isLoading: false)).thenReturn(null);
-
       target.incrementCounter();
-
+// 2 非同期処理が終わるのを待つ
       await untilCalled(loadingBloc.loading(isLoading: false));
-
+// 3 listenの結果を検証するためにexpectAsync1を使う // この場合は、Streamは、[0,1]という2回呼ばれる
       target.value.listen(
         expectAsync1(
           (actual) {
@@ -32,7 +30,7 @@ main() {
           count: 2,
         ),
       );
-
+// 4 順序が大事な場合はverifyInOrderを使う
       verifyInOrder([
         loadingBloc.loading(isLoading: true),
         repository.fetch(),

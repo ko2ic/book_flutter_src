@@ -6,7 +6,6 @@ import 'loading_model.dart';
 class CounterModel extends Model {
   final CountRepository _repository;
   final LoadingModel _loadingModel;
-
   int _counter = 0;
 
   int get counter => _counter;
@@ -19,7 +18,6 @@ class CounterModel extends Model {
       _loadingModel.loading(isLoading: false);
     });
     _counter += increaseCount;
-
     notifyListeners();
   }
 }

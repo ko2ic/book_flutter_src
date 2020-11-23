@@ -7,11 +7,9 @@ import 'loading_bloc.dart';
 class CounterBloc {
   final CountRepository _repository;
   final LoadingBloc _loadingBloc;
-
   final _valueController = StreamController<int>();
 
   Stream<int> get value => _valueController.stream;
-
   int _counter = 0;
 
   CounterBloc(this._repository, this._loadingBloc) {
@@ -24,7 +22,6 @@ class CounterBloc {
       _loadingBloc.loading(isLoading: false);
     });
     _counter += increaseCount;
-
     _valueController.sink.add(_counter);
   }
 
