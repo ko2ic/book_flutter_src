@@ -54,17 +54,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 // ドラッグ前のウィジェットを指定
                 child: FlutterLogo(
                   size: 100.0,
-                  colors: _color,
+                  style: FlutterLogoStyle.stacked,
+                  textColor: _color,
                 ),
                 // ドラッグ中に移動するウィジェットを指定
                 feedback: FlutterLogo(
                   size: 150.0,
-                  colors: _color,
+                  textColor: _color,
                 ),
                 // ドラッグ中に元の場所に表示するウィジェット
-                childWhenDragging: FlutterLogo(
+                childWhenDragging: const FlutterLogo(
                   size: 100.0,
-                  colors: Colors.grey,
+                  style: FlutterLogoStyle.stacked,
+                  textColor: Colors.grey,
                 ),
                 // ドロップできなかった場合の処理
                 onDraggableCanceled: (
@@ -91,10 +93,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           color: Colors.black,
                           height: 100.0,
                           width: 100.0,
-                          child: Center(
+                          child: const Center(
                             child: FlutterLogo(
                               size: 100.0,
-                              colors: Colors.green,
+                              style: FlutterLogoStyle.stacked,
+                              textColor: Colors.green,
                             ),
                           ),
                         )

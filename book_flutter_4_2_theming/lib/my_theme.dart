@@ -121,9 +121,12 @@ class MyTheme {
           /// AppBarなどで利用しているアイコン
           color: Colors.greenAccent,
         ),
-        accentIconTheme: const IconThemeData.fallback().copyWith(
-          /// FloatingActionButtonのアイコン色
-          color: Colors.red,
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          /// /// FloatingActionButtonのアイコン色
+          foregroundColor: Colors.red,
+
+          /// FloatingActionButtonの色
+          backgroundColor: Colors.green,
         ),
 //    SliderThemeData sliderTheme,
 //    TabBarTheme tabBarTheme,

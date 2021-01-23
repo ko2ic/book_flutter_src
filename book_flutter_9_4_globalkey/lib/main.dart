@@ -6,10 +6,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SampleWidget(
-        // (1) ここを変更してホットリロード
-        center: false,
-        child: MyText('Sample'),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('globalKey'),
+        ),
+        body: SampleWidget(
+          // (1) ここを変更してホットリロード
+          center: false,
+          child: MyText('Sample'),
+        ),
       ),
     );
   }
@@ -31,9 +36,9 @@ class _SampleWidgetState extends State<SampleWidget> {
   @override
   Widget build(BuildContext context) {
     // (2-1) GlobalKeyを使わない場合は(3)が呼ばれる
-    final child = widget.child;
+    // final child = widget.child;
     // (2-2) GlobalKeyを使う場合は(3)が呼ばれない
-    //final child = KeyedSubtree(key: key, child: widget.child);
+    final child = KeyedSubtree(key: key, child: widget.child);
 
     if (widget.center) {
       return Center(child: child);

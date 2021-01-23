@@ -121,19 +121,19 @@ class _MyHomePageState extends State<MyHomePage> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.add_box),
-            title: Text("ボタン"),
+            label: "ボタン",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.input),
-            title: Text("フォーム"),
+            label: "フォーム",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.view_list),
-            title: Text("リスト"),
+            label: "リスト",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.format_color_text),
-            title: Text("ラベル"),
+            label: "ラベル",
           ),
         ],
         onTap: (index) {

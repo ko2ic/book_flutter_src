@@ -17,10 +17,12 @@ class MyApp extends StatelessWidget {
 class FormSamplePage extends StatelessWidget {
   // (1) これが必ず必要
   final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: const Text('Sample'),
       ),
@@ -52,7 +54,7 @@ class FormSamplePage extends StatelessWidget {
                   onPressed: () {
                     // (2) ここでvalidateを呼ぶ
                     if (_formKey.currentState.validate()) {
-                      Scaffold.of(context).showSnackBar(const SnackBar(
+                      _scaffoldKey.currentState.showSnackBar(const SnackBar(
                         content: Text('Processing Data'),
                       ));
                     }
